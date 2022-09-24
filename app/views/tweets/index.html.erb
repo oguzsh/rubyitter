@@ -3,6 +3,12 @@
 </div>
 
 
-<%= turbo_frame_tag "tweets", class:"divide-y list-none" do %>
+<%= turbo_frame_tag "tweets", class: "divide-y list-none" do %>
   <%= render @tweets %>
+<% end %>
+
+<%= turbo_frame_tag Tweet.new do %>
+  <% if @tweets.none? %>
+    <%= render "empty" %>
+  <% end %>
 <% end %>
