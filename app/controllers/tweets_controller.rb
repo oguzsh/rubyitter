@@ -21,6 +21,8 @@ class TweetsController < ApplicationController
   end
 
   def destroy
+    @tweet = current_user.tweets.find(params[:id])
+    @tweet.destroy
   end
 
   def tweet_params
