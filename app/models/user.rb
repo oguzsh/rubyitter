@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   has_many :tweets, dependent: :destroy
   validates_uniqueness_of :username
+
+  has_one_attached :profile_image
 end

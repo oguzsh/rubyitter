@@ -1,7 +1,12 @@
-<%= render layout: "auth_layout", locals: { title: "Edit account" }  do %>
+<%= render layout: "auth_layout", locals: { title: "Edit account" } do %>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
 
     <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="mb-6">
+      <%= f.label :profile_image, class: label_class %>
+      <%= f.file_field :profile_image, class: "block w-full text-sm text-slate-500 file:mr-4 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sky-50 file:text-sky-700 hover:file:bg-sky-10" %>
+    </div>
 
     <div class="mb-6">
       <%= f.label :name, class: label_class %>
@@ -11,7 +16,7 @@
     <div class="mb-6">
       <%= f.label :username, class: label_class %>
       <%= f.text_field :username, class: input_class %>
-    </div
+    </div>
 
     <div class="mb-6">
       <%= f.label :email, class: label_class %>
@@ -27,8 +32,10 @@
     <div class="mb-6">
       <%= f.label :password, class: label_class %>
       <%= f.password_field :password, autocomplete: "new-password", class: input_class %>
-      <p class="pt-1 text-xs italic text-gray-500"> <% if @minimum_password_length %>
-          <%= @minimum_password_length %> characters minimum <% end %> (leave blank if you don't want to change it)</p>
+      <p class="pt-1 text-xs italic text-gray-500">
+        <% if @minimum_password_length %>
+          <%= @minimum_password_length %> characters minimum
+        <% end %> (leave blank if you don't want to change it)</p>
     </div>
 
     <div class="mb-6">
@@ -48,7 +55,7 @@
   <% end %>
 
   <div class="mb-6">
-    <hr class="mb-6" />
+    <hr class="mb-6"/>
     <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: button_class(variant: "small", additional_classes: "border") %>
   </div>
 <% end %>
