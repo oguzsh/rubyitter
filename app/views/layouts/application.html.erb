@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html class="h-full antialiased">
-  <%= render "shared/head" %>
+<%= render "shared/head" %>
 
-  <body class="font-sans font-normal leading-normal text-gray-800 bg-white flex flex-col min-h-screen ">
+<body class="font-sans font-normal leading-normal text-gray-800 bg-white flex flex-col min-h-screen ">
 
-    <header>
-      <%= render "shared/flash_notice" %>
-      <%= render "shared/navbar" %>
-    </header>
+<header>
+  <%= render "shared/flash_notice" %>
+</header>
 
-    <main class="flex-grow">
+<main class="flex-grow container mx-auto px-4">
+  <div class="grid lg:grid-cols-12 grid-cols-1 h-screen pr-6">
+    <div class="lg:col-span-2 pt-6 pr-6">
+      <%= link_to root_path, class: "link text-xl tracking-tight font-black" do %>
+        <span class="text-sky-500">Rubyitter</span>
+      <% end %>
+      <ul class="mt-6">
+        <li>
+          <%= link_to root_path, class: "rounded-full px-4 -ml-4 inline-flex items-center py-3 hover:bg-neutral-50 w-full text-lg transition ease-in-out duration-500" do %>
+            <svg class="fill-current w-6 h-6 mr-4" viewBox="0 0 24 24" aria-hidden="true" class="r-18jsvk2 r-4qtqp9 r-yyyyoo r-lwhw9o r-dnmrzs r-bnwqim r-1plcrui r-lrvibr">
+              <g>
+                <path d="M22.58 7.35L12.475 1.897c-.297-.16-.654-.16-.95 0L1.425 7.35c-.486.264-.667.87-.405 1.356.18.335.525.525.88.525.16 0 .324-.038.475-.12l.734-.396 1.59 11.25c.216 1.214 1.31 2.062 2.66 2.062h9.282c1.35 0 2.444-.848 2.662-2.088l1.588-11.225.737.398c.485.263 1.092.082 1.354-.404.263-.486.08-1.093-.404-1.355zM12 15.435c-1.795 0-3.25-1.455-3.25-3.25s1.455-3.25 3.25-3.25 3.25 1.455 3.25 3.25-1.455 3.25-3.25 3.25z"></path>
+              </g>
+            </svg>
+            <span>Home</span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="lg:col-span-6 border-x">
       <%= content_for?(:content) ? yield(:content) : yield %>
-    </main>
-  </body>
+    </div>
+    <div class="lg:col-span-4 pl-6 pt-6">
+      <div class="bg-gray-50 w-full min-h-[150px] rounded-lg p-6">
+        Sidebar
+      </div>
+    </div>
+  </div>
+</main>
+</body>
 </html>
