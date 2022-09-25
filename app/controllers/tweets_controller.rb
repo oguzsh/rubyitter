@@ -7,7 +7,9 @@ class TweetsController < ApplicationController
   end
 
   def create
-    @tweet = current_user.tweets.new(tweet_params)
+    @tweet = Tweet.new(tweet_params)
+    @tweet.user = current_user
+
     respond_to do |format|
       if @tweet.save
         format.turbo_stream
@@ -32,10 +34,10 @@ class TweetsController < ApplicationController
   def retweet
     @tweet = Tweet.find(params[:id])
 
-    retweet = current_user.tweets.new(tweet_id: @tweet.id)
+    @retweet = current_user.tweets.new(tweet_id: @tweet.id)
 
     respond_to do |format|
-      if retweet.save
+      if @retweet.save
         format.turbo_stream
       else
         format.html { redirect_back fallback_location: @tweet, alert: "Could not retweet" }

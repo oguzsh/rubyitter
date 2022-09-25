@@ -3,14 +3,14 @@
 </div>
 
 
-<%= turbo_frame_tag "tweets", class: "divide-y list-none" do %>
+<%= turbo_frame_tag "tweets" do %>
   <% @tweets.each do |tweet| %>
     <%= render partial: "tweets/#{tweet.tweet_type}", locals: { tweet: tweet } %>
   <% end %>
 <% end %>
 
 <%= turbo_frame_tag Tweet.new do %>
-  <% if @tweets.none? %>
+  <% if Tweet.all.none? %>
     <%= render "empty" %>
   <% end %>
 <% end %>
