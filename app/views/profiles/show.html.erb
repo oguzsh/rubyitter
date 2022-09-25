@@ -13,6 +13,6 @@
   </div>
 
   <ul class="list-none divide-y -mx-6 mt-10">
-    <%= render collection: @profile.tweets, partial: "tweets/tweet" %>
+    <%= render collection: @profile.tweets.where(tweet_id: nil), partial: "tweets/tweet" %>
   </ul>
 </div>
